@@ -1,0 +1,26 @@
+<h2>Add A New Party</h2>
+
+<form action="/parties" method='POST'>
+
+<label for="table_table_number">Table Number:</label>
+<select name="party[table_number]">
+    <% @available.each do |avail| %>
+<option id="table_table_number" type="number" value="<%= avail %>"><%= avail %> 
+</option>
+<% end %>
+</select>
+<br>
+		
+<label for="party_guests">No. of Guests:</label>
+<input id="party_guests" type="number" name='party[guests]' min=0 max=6 value=1>
+<br>
+
+<label for="party_paid">Paid:</label>
+<select name='party[paid]'>
+<option id="party_paid" type="text" value="true">Yes</option>
+<option id="party_paid" type="text" value="false">No</option>
+</select>
+<br>
+    	
+<input type="submit" value="Add New Party!">
+</form>
