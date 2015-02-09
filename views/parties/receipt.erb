@@ -1,0 +1,20 @@
+<h1>Receipt for Table <%= @party.table_name %></h1>
+
+<h2>Itemized list:</h2>
+<ul>
+<% @party.food.each do |food| %>
+    <li><%= food.name %></li>
+<% end %>
+</ul>
+Total: $<%= @party.total %>.00<br><br>
+
+<% fifteen = @party.total * 0.15 %>
+15% Tip: $<%= fifteen.to_i %>.00<br><br>
+
+<% twenty = @party.total * 0.20 %>
+20% Tip: $<%= twenty.to_i %>.00<br><br>
+
+<% twofive = @party.total * 0.25 %>
+25% Tip: $<%= twentyfive.to_i %>.00<br><br>
+
+<a href="/parties/<%= @party.id %>">Back</a>

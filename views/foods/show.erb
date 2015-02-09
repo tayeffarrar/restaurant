@@ -1,7 +1,8 @@
-<h2>Food Name: <%= @food.name %></h2>
-<p>Cuisine: <%= @food.cuisine %></p>
-<p>Price: <%= @food.price %></p>
-<p>Allergens: <%= @food.allergens %></p>
-    
+<h2>Food Name: <%= @food.name %><span> $<%= @food.price %></span>
+</h2>
+<h3>Cuisine: <%= @food.cuisine %></h3>
 
-<a href="/foods/<%= @food.id %>/edit">Edit Food</a>
+<ul>
+<li><a href="/foods/<%= @food.id %>/edit">Edit Menu Item</a></li>
+<li><a href="/foods">View Menu</a></li>
+</ul>

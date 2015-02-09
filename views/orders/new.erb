@@ -1,0 +1,24 @@
+<h2>Create an Order for table <%= @party.table_name %></h2>
+  
+  <form action="/orders" method="POST">
+    
+    <input id="order_partyid" type="text" name="order[partyid]" value="<%=order.partyid %>"> 
+    <select name ="order[foodid]">
+      <% @foods.each do |food| %>
+      <option id="food_name" type="text" value="<%= food.name %>">
+      <%= food.name %> 
+      </option>
+      <% end %>
+    </select>
+
+  <select name="order[quantity]">
+    <% 10.times do |x| %>
+    <% x += 1 %>
+    <option value="<%= x %>"><%= x %></option>
+    <% end %>
+  </select>
+    
+  <input type="submit" value="Submit">
+</form>
+
+

@@ -1,0 +1,9 @@
+<h2>Current Orders</h2>
+<a href="/orders/new">Add New Order</a>
+<br>
+  <% @orders.each do |order| %>
+<ul>
+  <li><a href="/orders/<%= order.id %>"><%= order.id %></a></li>
+	<% end %>
+</ul>
+

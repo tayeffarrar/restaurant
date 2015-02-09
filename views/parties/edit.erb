@@ -1,25 +1,20 @@
-<h2>Editing <%= @party.table_number %></h2>
+<h2>Edit Party <%= @party.table_name %></h2>
 
 <form action="/parties/<%= @party.id %>" method="POST">
 
-<label for="parties_name">Name:<partiesel>
-<input id="parties_name" type="text" name='food[name]' value="<%= @food.name%>"><br>
+	<label for="party_table_name">Table Name:</label>
+		<input id="party_table_name" type="text" name="party[table_name]" value="<%= @party.table_name %>">
+	<br>
 
-<label for="food_cuisine">Cuisine Type:</label>
-<input id="food_cuisine" type="text" name='food[cuisine]' value="<%= @food.cuisine%>" ><br>
+	<label for="party_guests">Party of:</label>
+		<input id="party_guests" type="number" name="party[guests]" value="<%= @party.guests %>">
+	<br>
 
-<label for="food_price">Price:</label>
-<input id="food_price"type="number" name='food[price]'value="<%= @food.price%>"><br>
+	<input type="hidden" name="_method" value="patch">
+	<input type="submit" value="Submit">
+</form>	
 
-<label for="food_allergens">Allergens:</label>
-<input id="food_allergens" type="text" name='food[allergens]' value="<%= @food.allergens%>"><br>
-
-<input type="hidden" name="_method" value="patch">
-<input type="submit" value="Edit this item!">
+	<form action="/parties/<%= @party.id %>" method="POST">
+	<input type="submit" name="_method" value="Delete">
 </form>
 
-
-<form action="/foods/<%= @food.id %>" method="POST">
-<input type="hidden" name="_method" value="DELETE">
-<input type="submit" value="Delete Food">
-</form>

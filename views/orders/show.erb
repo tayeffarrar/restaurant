@@ -1,0 +1,12 @@
+<h1>Table Name: <%=order.party.table_name %>
+<br>
+
+<h2>Order ID: <%= @order.id %></h2>
+<h3>Party ID: <%= @order.partyid %></h3>
+<h3>Food ID: <%= @order.foodid %></h3>
+
+<ul>
+<li><a href="/parties/<%=@order.party.id%>"></a>Add A New Order</li>
+<li><a href="/orders/<%= @orders.id %>/edit">Edit Order</a></li>
+<li><a href="/orders">View All Orders</a></li>
+</ul>

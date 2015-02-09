@@ -1,9 +1,11 @@
-<h2>Current Parties</h2>
+<h1>Current Parties:</h1>
+<h3><a href="/parties/new">Create A New Party</a></h3>
+<br>
 
 <ul>
-  <% @party.each do |party| %>
-    <li>Table Number:<a href="/parties/<%= party.id %>"><%= party.table_number %></a></li>
-  	<% end %>
-	<a href="/parties/new">Add Party</a><br>
+<% @party.each do |party| %>
+  <li>Table Number:
+  <a href="/parties/<%= party.id %>"><%= party.table_name%></a>
+  </li>
+<% end %>
 </ul>
-

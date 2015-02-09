@@ -17,7 +17,6 @@ ActiveRecord::Base.establish_connection(
 # Party.destroy_all
 # Order.destroy_all
 
-#FOODS
 [
   {
     name: 'Bacon Tater tots',
@@ -51,7 +50,6 @@ ActiveRecord::Base.establish_connection(
   Food.create(food)
 end
 
-#PARTIES 
 [
   {
     table_number: 1 ,
@@ -65,8 +63,8 @@ end
     paid: false    
   },
   {
-    table_number: 3,
-    guests: 3,
+    table_number: 2,
+    guests: 2,
     paid: false    
   }  
 ].each do |party|
