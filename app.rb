@@ -1,3 +1,6 @@
+require 'sinatra'
+require 'sass'
+
 Dir["models/*.rb"].each do |file|
 require_relative file
 end
@@ -5,6 +8,7 @@ end
 class Restaurant < Sinatra::Base
 register Sinatra::ActiveRecordExtension
 enable :method_override
+
 
   # Console
   get '/console' do
@@ -24,12 +28,17 @@ enable :method_override
   end
   # As an employee, I want to be able to add new food items to the menu.
   get '/foods/new' do
+    @food = Food.new
     erb :'foods/new'
   end
 
   post '/foods' do
-    food = Food.create(params[:food])
-    redirect to "/foods/#{food.id}"
+    @food = Food.new(params[:food])
+    if @food.save
+      redirect to "/foods/#{@food.id}"
+    else
+      erb :'foods/new'
+    end
   end
   # As an employee, I want to be able to edit previously added food items, 
   get '/foods/:id/edit' do
@@ -74,6 +83,7 @@ enable :method_override
   get '/parties/:id/order' do |id|
     @party = Party.find(id)
     @foods = Food.all
+    @order = Order.new(partyid: @party.id)
     erb :'orders/new'
   end 
 
@@ -83,8 +93,12 @@ enable :method_override
   end
 
   post '/parties' do
-    party = Party.create(params[:party])
-    redirect to "parties/#{party.id}"
+    @party = Party.new(params[:party])
+    if @party.save
+      redirect to "/parties/#{@party.id}"
+    else
+      erb :'parties/new'
+    end   
   end
 
   get '/parties/:id/edit' do |id|
@@ -100,48 +114,53 @@ enable :method_override
   end  
 
   delete '/parties/:id' do
-    party = Party.find(params[:id])
-    party.destroy
+    @party = Party.find(params[:id])
+    @party.destroy
     redirect to "/parties"
   end
 
 # ORDERS
-  get '/orders' do
-    @order = Order.all
+  get '/parties/:party_id/orders' do |party_id|
+    @party = Party.find(party_id)
+    @order = @party.orders
     erb :'orders/index'
   end
 
-  get '/parties/new' do
-    erb :'orders/new'
-  end
-
-  get '/order/:id' do |id|
+  get '/parties/:party_id/orders/:id' do |party_id, id|
+    @party = Party.find(party_id)
     @order = Order.find(id)
     erb :'orders/show'
   end   
 
-  post '/orders' do
-    order = Order.create(params[:order])
-    party = order.party.id
-    redirect to "/orders/#{order.id}"
+  post '/parties/:party_id/orders' do |party_id|
+    @party = Party.find(party_id)
+    @order = Order.create(params[:order])
+    redirect to "/parties/#{@party.id}/orders/#{@order.id}"
   end
 
-  get '/orders/:id/edit' do |id|
+  # get '/parties/:party_id/orders/:id/edit' do |party_id, id|
+  #   @order = Order.find(id)
+  #   erb :'orders/edit'
+  # end
+
+  delete '/parties/:party_id/orders/:id' do |party_id, id|
     @order = Order.find(id)
-    erb :'orders/edit'
-  end
-
-  delete '/orders/:id' do |id|
-    order = Order.find(id)
-    order.destroy
+    @order.destroy
     redirect to "/orders"
   end
 
-  patch '/orders/:id' do |id|
-    order = Order.find(id)
-    order.update(params[:order])
-    redirect to "/orders/#{order.id}"
-  end  
+  # patch '/parties/:party_id/orders/:id' do |party_id, id|
+  #   @order = Order.find(id)
+  #   @order.update(params[:order])
+  #   redirect to "/parties/#{@party.id}"
+  # end  
+
+  get '/parties/:party_id/receipt' do |party_id|
+    @party = Party.find(party_id)
+    @order = @party.orders
+    erb :'parties/receipt'
+  end
+
 
 end
 

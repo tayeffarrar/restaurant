@@ -1,12 +1,37 @@
-<h1>Table Name: <%=order.party.table_name %>
-<br>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu | The Mingus</title>
+</head>
 
-<h2>Order ID: <%= @order.id %></h2>
-<h3>Party ID: <%= @order.partyid %></h3>
-<h3>Food ID: <%= @order.foodid %></h3>
+<body>
+<header>
+  <img src="/../assets/mingus-logo.png">
+		<nav>
+			<ul class="mainnav clearfix">
+        <li><a href='/'>Home</a></li>
+				<li><a href='/foods'>Menu</a></li>
+				<li class="current"><a href='/parties'>Parties</a></li>
+		</ul>
+		</nav>
+</header>
+	
+	<main>
+		<h1>Order Table <%= @order.party.table_name %></h1>
+		<div class="page">
+			<ul class="buttons clearfix">
+				<li><a href="/parties/<%=@order.party.id%>/order">Add Order</a></li>
+				<li><a href="/parties/<%=@order.party.id%>/orders">Back</a></li>
+			</ul>
+			
+			<ul>	
+				<li class="options"><a href="/parties/<%= @order.partyid %>">Party ID <%= @order.partyid %></a>
+				<p>Order ID <%= @order.id %></p> 
+				<p>Menu Item: <%= @order.food.name %></p>
+				</li>
+				</ul>
+			</div>
+		</main>
+	</body>
+</html>	
 
-<ul>
-<li><a href="/parties/<%=@order.party.id%>"></a>Add A New Order</li>
-<li><a href="/orders/<%= @orders.id %>/edit">Edit Order</a></li>
-<li><a href="/orders">View All Orders</a></li>
-</ul>

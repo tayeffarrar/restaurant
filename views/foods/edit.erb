@@ -1,22 +1,47 @@
-<h2>Edit <%= @food.name %></h2>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit | Menu | The Mingus</title>
+</head>
 
-<form action="/foods/<%= @food.id %>" method="POST">
+<body>
+	<header>
+	  <img src="../../assets/mingus-logo.png">
+			<nav>
+				<ul class="mainnav clearfix">
+	        <li><a href='/'>Home</a></li>
+					<li class="current"><a href='/foods'>Menu</a></li>
+					<li><a href='/parties'>Parties</a></li>
+			</ul>
+			</nav>
+	</header>
 
-<label for="food_name">Name:</label>
-	<input id="food_name" type="text" name='food[name]' value="<%= @food.name%>"><br>
+	<main>
+		<h1>Edit</h1>
+  	<div class="page">
+	    <% if @food.errors.any? %>
+	      <%= @food.errors.full_messages %>
+	    <% end %>  		
+				<form action="/foods/<%= @food.id %>" method="POST">
 
-<label for="food_cuisine">Cuisine Type:</label>
-	<input id="food_cuisine" type="text" name='food[cuisine]' value="<%= @food.cuisine%>" >
-<br>
+					<label for="food_name">Name:</label>
+					<input id="food_name" type="text" name='food[name]' value="<%= @food.name%>">
 
-<label for="food_price">Price:</label>
-	<input id="food_price"type="number" name='food[price]'value="<%= @food.price%>">
-<br>
+					<label for="food_cuisine">Cuisine Type:</label>
+					<input id="food_cuisine" type="text" name='food[cuisine]' value="<%= @food.cuisine%>">
 
-	<input type="hidden" name="_method" value="patch">
-	<input type="submit" value="Submit">
-</form>
+					<label for="food_price">Price:</label>
+					<input id="food_price"type="text" name='food[price]'value="<%= @food.price%>">
 
-<form action="/foods/<%= @food.id %>" method="POST">
-	<input type="submit" name="_method" value="Delete">
-</form>
+					<label>
+					<input type="hidden" name="_method" value="patch">
+		      <input type="submit" name="submit" value="Submit" id="submit">    
+					</label>
+
+					<input type="submit" name="_method" value="Delete" id="submit">
+				</form>
+			</div>
+		</main>
+	</body>
+</html>
+

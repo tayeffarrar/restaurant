@@ -13,9 +13,6 @@ ActiveRecord::Base.establish_connection(
   host: "localhost" 
 )
 
-# Food.destroy_all
-# Party.destroy_all
-# Order.destroy_all
 
 [
   {

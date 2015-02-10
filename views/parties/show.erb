@@ -1,8 +1,36 @@
-<h2>Table Name: <%= @party.table_name %></h2>
-<h3>Party of: <%= @party.guests %></h3>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu | The Mingus</title>
+</head>
 
-<ul>
-	<li><a href="/parties/<%= @party.id %>/order">Add an Order</a></li>
-	<li><a href="/parties/<%= @party.id %>/edit">Edit Party Info</a></li>
-	<li><a href="/parties">View All Parties</a></li>
-<ul>
+<body>
+<header>
+  <img src="../assets/mingus-logo.png">
+		<nav>
+			<ul class="mainnav clearfix">
+        <li><a href='/'>Home</a></li>
+				<li><a href='/foods'>Menu</a></li>
+				<li  class="current"><a href='/parties'>Parties</a></li>
+		</ul>
+		</nav>
+</header>
+
+	<main>
+		<h1>Current Parties</h1>
+			<div class="page">
+				<ul class="buttons clearfix">
+					<li><a href="/parties/<%= @party.id %>/order">Add Order</a></li>
+					<li><a href="/parties/<%= @party.id %>/edit">Edit Party</a></li>
+					<li><a href="/parties">Back</a></li>
+				</ul>	
+
+				<ul>
+					<li class="options"><p id="closeup">Table: <%= @party.table_name %></p>
+						<p>Guests: <%= @party.guests %></p>
+					</li>
+				</ul>	
+			</div>
+		</main>	
+	</body>	
+</html>	

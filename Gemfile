@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Database
 gem 'pg'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
+gem 'unicorn'
 
 # Sinatra
 gem 'sinatra', github: 'sinatra/sinatra'

@@ -1,6 +1,8 @@
 class Party < ActiveRecord::Base
-	has_many :orders
+	has_many :orders,  foreign_key: 'partyid'
   has_many :foods, through: :orders
+
+  validates :table_name, uniqueness: true
 
 
 def getreceipt

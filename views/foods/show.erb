@@ -1,8 +1,35 @@
-<h2>Food Name: <%= @food.name %><span> $<%= @food.price %></span>
-</h2>
-<h3>Cuisine: <%= @food.cuisine %></h3>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu | The Mingus</title>
+</head>
 
-<ul>
-<li><a href="/foods/<%= @food.id %>/edit">Edit Menu Item</a></li>
-<li><a href="/foods">View Menu</a></li>
-</ul>
+<body>
+<header>
+  <img src="../assets/mingus-logo.png">
+		<nav>
+			<ul class="mainnav clearfix">
+        <li><a href='/'>Home</a></li>
+				<li class="current"><a href='/foods'>Menu</a></li>
+				<li><a href='/parties'>Parties</a></li>
+		</ul>
+		</nav>
+</header>
+
+	<main>
+		<h1>Current Menu</h1>
+		<div class="page">
+			<ul class="buttons clearfix">
+				<li><a href="/foods/<%= @food.id %>/edit">Edit</a></li>
+				<li><a href="/foods">View Menu</a></li>
+			</ul>	
+
+			<ul>
+			<li class="options"><p id="closeup"><%= @food.name %></p>
+			<p> <%= @food.cuisine %></p>
+			<p> £ <%= @food.price %></p>
+			</li>
+			</ul> 
+		</main>	
+	</body>
+</html>

@@ -2,19 +2,17 @@
 
 <h2>Itemized list:</h2>
 <ul>
-<% @party.food.each do |food| %>
-    <li><%= food.name %></li>
+<% @party.orders.each do |order| %>
+    <li><%= order.food.name %></li>
 <% end %>
 </ul>
-Total: $<%= @party.total %>.00<br><br>
+Total: $<%= @party.total %>.00<br>
 
-<% fifteen = @party.total * 0.15 %>
-15% Tip: $<%= fifteen.to_i %>.00<br><br>
+<% tipfifteen = @party.total * 0.15 %>
+15% Tip: $<%= tipfifteen.to_i %>.00<br><br>
 
-<% twenty = @party.total * 0.20 %>
-20% Tip: $<%= twenty.to_i %>.00<br><br>
+<% tiptwenty = @party.total * 0.20 %>
+20% Tip: $<%= tiptwenty.to_i %>.00<br><br>
 
-<% twofive = @party.total * 0.25 %>
-25% Tip: $<%= twentyfive.to_i %>.00<br><br>
-
-<a href="/parties/<%= @party.id %>">Back</a>
+<% tiptwentyfive = @party.total * 0.25 %>
+25% Tip: $<%= tiptwentyfive.to_i %>.00<br><br>

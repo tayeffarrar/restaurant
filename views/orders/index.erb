@@ -1,9 +1,14 @@
+<h1>Order for Table <%= @party.table_name %></h1>
+<h2>Party of: <%= @party.guests %></h3>
 <h2>Current Orders</h2>
-<a href="/orders/new">Add New Order</a>
-<br>
-  <% @orders.each do |order| %>
-<ul>
-  <li><a href="/orders/<%= order.id %>"><%= order.id %></a></li>
-	<% end %>
-</ul>
 
+<ol>
+  <% @order.each do |order| %>
+  <% Pry.start(binding) %>
+  <li><a href="/parties/<%= @party.id%>/orders/<%= order.id %>"><%= order.food.name%></a></li>
+	<% end %>
+</ol>
+
+<a href="/parties/<%= @party.id %>/order">Add New Order</a>
+<a href="/parties/<%= @party.id %>/orders">View All Orders</a>
+<a href="/parties/<%= @party.id %>">Back</a>

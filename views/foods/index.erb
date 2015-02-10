@@ -1,10 +1,38 @@
-<h1>Current Menu:</h1>
-<a href="/foods/new">Add Menu Item</a>
-<br>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu | The Mingus</title>
+</head>
 
-<ul>
-  <% @menu.each do |food| %>
-    <li><a href="/foods/<%= food.id %>"><%= food.name %></a></li>
-  	<% end %>
-</ul>
+<body>
+	<header>
+	  <img src="../assets/mingus-logo.png">
+			<nav>
+				<ul class="mainnav clearfix">
+	        <li><a href='/'>Home</a></li>
+					<li class="current"><a href='/foods'>Menu</a></li>
+					<li><a href='/parties'>Parties</a></li>
+			</ul>
+			</nav>
+	</header>
 
+	<main>
+		<h1>Current Menu</h1>
+			<div class="page">
+				<ul class="buttons clearfix">
+					<li><a href="/foods/new">Add New</a></li>
+					<li><a href="/foods">Delete</a></li>
+				</ul>
+
+				<ul>
+					<% @menu.each do |food| %>
+				  <li class="options"><a href="/foods/<%= food.id %>"><%= food.name %></a>
+				  <p> <%= food.cuisine %></p> 
+				  <p> £ <%= food.price %></p>
+				  </li>
+					<% end %>
+				</ul>
+			</div>
+		</main>
+	</body>
+</html>

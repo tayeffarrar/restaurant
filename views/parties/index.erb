@@ -1,11 +1,37 @@
-<h1>Current Parties:</h1>
-<h3><a href="/parties/new">Create A New Party</a></h3>
-<br>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Current Parties | The Mingus</title>
+</head>
 
-<ul>
-<% @party.each do |party| %>
-  <li>Table Number:
-  <a href="/parties/<%= party.id %>"><%= party.table_name%></a>
-  </li>
-<% end %>
-</ul>
+<body>
+<header>
+  <img src="../assets/mingus-logo.png">
+		<nav>
+			<ul class="mainnav clearfix">
+        <li><a href='/'>Home</a></li>
+				<li><a href='/foods'>Menu</a></li>
+				<li class="current"><a href='/parties'>Parties</a></li>
+		</ul>
+		</nav>
+</header>
+
+	<main>	
+		<h1>Current Parties</h1>
+			<div class="page">
+				<ul class="buttons clearfix">
+					<li><a href="/parties/new">Add New</a></li>
+					<li><a href="/parties">Delete</a></li>
+				</ul>
+
+				<ul>
+				<% @party.each do |party| %>
+				  <li class="options"><a href="/parties/<%= party.id %>"> Table: <%= party.table_name%></a>
+				  <p>Guests: <%= party.guests%></p>
+				  </li>
+				<% end %>
+				</ul>
+			</div>
+		</main>
+	</body>
+</html>

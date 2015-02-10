@@ -1,15 +1,38 @@
-<h2>Add a New Party:</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add New | Parties | The Mingus</title>
+</head>
 
-<form action="/parties" method='POST'>
+<body>
+	<header>
+	  <img src="../assets/mingus-logo.png">
+	    <nav>
+	      <ul class="mainnav clearfix">
+	        <li><a href='/'>Home</a></li>
+	        <li><a href='/foods'>Menu</a></li>
+	        <li class="current"><a href='/parties'>Parties</a></li>
+	    </ul>
+	    </nav>
+	</header>
 
-	<label for="party_table_name">Table Name:</label>
-	<input id="party_table_name" type="text" name='party[table_name]'>
-	<br>
+	<main>
+		<h1>Add New</h1>
+			<div class="page">
 
-	<label for="party_guests">Guests:</label>
-	<input id="party_guests"type="number" name='party[guests]'>
-	<br>
-
-	<input type="submit" value="Add">
-
-</form>
+				<form action="/parties" method='POST'>
+				
+					<label for="party_table_name">Table Name:</label>
+					<input id="party_table_name" type="text" name='party[table_name]'>
+					
+					<label for="party_guests">Guests:</label>
+					<input id="party_guests"type="text" name='party[guests]'>
+					
+	        <label>
+	        <input type="submit" name="submit" value="Add" id="submit">    
+	        </label>			      
+      	</form>
+    	</div>
+  	</main>
+  </body>
+</html>
