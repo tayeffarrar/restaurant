@@ -1,0 +1,19 @@
+<h1>Welcome, waiter! Log in below.</h1>
+
+<% @waiter.errors.full_messages.each do |message| %>
+  <p class="error"><%= message %></p>
+<% end %>
+
+<form action="/login" method="post">
+  <fieldset>
+    <label for="waiter_name">Name</label>
+    <input type="email" id="waiter_name" name="waiter[name]" value="<%= @waiter.name %>">
+  </fieldset>
+
+  <fieldset>
+    <label for="waiter_password">Password</label>
+    <input type="password" id="waiter_password" name="waiter[password]">
+  </fieldset>
+
+  <input type="submit" value="Log in">
+</form>
